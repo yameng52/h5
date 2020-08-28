@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/csst9402.css"/>
+	</head>
+	<body>
+		<div class="login">
+			<div class="login-top">
+				<p class="dlu">登录</p>
+				<p class="clwzhzc">若无账号<a href="reg.html">立即注册</a></p>
+			</div>
+			<div class="login-nr">
+				<div class="login-nr-inp">
+					<input type="text" name="name" id="name" value="" placeholder="请输入用户名/手机号" />
+				</div>
+				<div class="login-nr-inp">
+					<input type="password" name="paw" id="paw"placeholder="请输入登录密码" >
+				</div>
+				<div class="wjmm"><a href="忘记密码.html">忘记密码</a></div>
+			</div>
+		</div>
+		<div class="login-nr-dl">
+			<input type="button" id="btn_login" value="登录"  />
+		</div>
+		<div style="height: 4em;"></div>
+	</body>
+	<script src="/js/jquery-1.12.3.js"></script>
+	<script>
+		//点击登录
+		$("#btn_login").on('click',function(){
+			var name = $("#name").val();
+			var paw = $("#paw").val();
+			$.ajax({
+				url: 'http://api2.1910.com/users/login',
+				data: {name:name,paw:paw},
+				type: 'post',
+				dataType: 'json',
+				success: function(d){
+					console.log(d);
+				}
+			});
+		});
+	</script>
+</html>
